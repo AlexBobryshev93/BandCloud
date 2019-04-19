@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Band Cloud</title>
+</head>
+
+<body>
+<h1>Here you can start your own band...</h1>
+<form method="POST" th:object="${design}">
+    <span>Choose a genre to play</span>
+    <select th:field="*{genre}">
+        <option th:each="genreVar : ${genres}" th:value="${genreVar}" th:text="${genreVar}"></option>
+    </select></br>
+    <span>Choose a right name for your brand new band</span>
+    <input type="text" th:field="*{name}"></br>
+    <button>Start the band</button>
+</form>
+</body>
+</html>
