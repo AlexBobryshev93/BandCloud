@@ -1,6 +1,6 @@
 //This class is an automatic alternative to HomeController class
-
-/*package alex.bandcloud;
+/*
+package alex.bandcloud;
 
 import org.springframework.context.annotation.Configuration;
 import

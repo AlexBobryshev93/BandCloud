@@ -8,7 +8,14 @@
 <body>
 <h1>It's your new band!</h1>
 <img th:src="@{/images/logo.jpeg}">
-<!-- <p th:text="${design.name}"></p> -->
+<p>
+    <span>Name:</span>
+    <span th:text="${design.name}"></span>
+</p>
+<p>
+    <span>Genre:</span>
+    <span th:text="${design.genre}"></span>
+</p>
 <p></p>
 </body>
 </html>
