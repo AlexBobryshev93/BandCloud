@@ -1,5 +1,3 @@
-//This class is an automatic alternative to HomeController class
-/*
 package alex.bandcloud;
 
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +12,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("home");
+        registry.addViewController("/bands").setViewName("bands");
     }
 
 }
-*/
