@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Band {
-
+    private int id;
     private String name;
     private Genre genre;
 
