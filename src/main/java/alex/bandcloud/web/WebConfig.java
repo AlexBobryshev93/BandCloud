@@ -1,4 +1,4 @@
-package alex.bandcloud;
+package alex.bandcloud.web;
 
 import org.springframework.context.annotation.Configuration;
 import

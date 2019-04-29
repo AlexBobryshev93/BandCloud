@@ -1,4 +1,4 @@
-package alex.bandcloud;
+package alex.bandcloud.model;
 
 import lombok.Data;
 
