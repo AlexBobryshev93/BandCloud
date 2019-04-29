@@ -28,6 +28,7 @@ public class DesignController {
 
     @PostMapping
     public String processDesign(@ModelAttribute("design") Band design, Model model) {
+        System.out.println(design);
         return "result";
     }
 }
