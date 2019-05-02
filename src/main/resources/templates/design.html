@@ -7,6 +7,9 @@
 
 <body>
 <h1>Here you can start your own band...</h1>
+<i th:text="${msg}"></i>
+</br>
+</br>
 <form method="POST" th:object="${design}">
     <span>Choose a genre to play</span>
     <select th:field="*{genre}">

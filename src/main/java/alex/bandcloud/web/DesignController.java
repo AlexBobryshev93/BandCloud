@@ -38,6 +38,10 @@ public class DesignController {
 
     @PostMapping
     public String processDesign(@ModelAttribute("design") Band design, Model model) {
+        if(bandRepo.findFirstByName(design.getName()) != null) {
+            model.addAttribute("msg","ERROR: A band with such name already exists");
+            return "design";
+        }
         Band saved = bandRepo.save(design);
         System.out.println(saved);
         return "result";
