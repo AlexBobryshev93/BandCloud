@@ -6,6 +6,13 @@
     <title>Band Cloud</title>
 </head>
 <body>
+<h1>Already created bands:</h1>
+<ul th:each="bandVar : ${bands}">
+    <li th:text="${bandVar.id}"></li>
+    <li th:text="${bandVar.name}"></li>
+    <li th:text="${bandVar.genre}"></li>
+    </br>
+</ul>
 <a th:href="@{/}">back to the home page</a>
 </body>
 </html>
