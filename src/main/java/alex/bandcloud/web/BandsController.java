@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("/bands")
@@ -33,6 +31,7 @@ public class BandsController {
                 list.add(band);
             }
         }
+        list.sort(Comparator.comparing(Band::getId));
         model.addAttribute("bands", list);
 
     }
