@@ -1,6 +1,8 @@
 package alex.bandcloud.web;
 
 import alex.bandcloud.model.Band;
+import alex.bandcloud.repos.BandRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,14 @@ import java.util.List;
 @Controller
 @RequestMapping("/design")
 public class DesignController {
+
+    private BandRepo bandRepo;
+
+    @Autowired
+    public DesignController(BandRepo bandRepo) {
+        this.bandRepo = bandRepo;
+    }
+
     @ModelAttribute
     public void addDataToModel(Model model) {
         List<Band.Genre> genres = Arrays.asList(Band.Genre.values());
@@ -28,7 +38,8 @@ public class DesignController {
 
     @PostMapping
     public String processDesign(@ModelAttribute("design") Band design, Model model) {
-        System.out.println(design);
+        Band saved = bandRepo.save(design);
+        System.out.println(saved);
         return "result";
     }
 }
