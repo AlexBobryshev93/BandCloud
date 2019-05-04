@@ -23,17 +23,8 @@ public class BandsController {
 
     @ModelAttribute
     public void addBandsToModel(Model model) {
-        List<Band> list = new ArrayList<>();
-        Band.Genre[] genres = Band.Genre.values();
-
-        for(Band.Genre genre : genres) {
-            for(Band band : bandRepo.findDistinctByGenre(genre)) {
-                list.add(band);
-            }
-        }
-        list.sort(Comparator.comparing(Band::getId));
+        List<Band> list = bandRepo.findAll();
         model.addAttribute("bands", list);
-
     }
 
     @GetMapping
