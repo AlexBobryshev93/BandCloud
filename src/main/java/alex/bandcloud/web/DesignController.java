@@ -42,8 +42,8 @@ public class DesignController {
             model.addAttribute("msg","ERROR: A band with such name already exists");
             return "design";
         }
-        Band saved = bandRepo.save(design);
-        System.out.println(saved);
+
+        System.out.println(bandRepo.save(design));
         return "result";
     }
 }

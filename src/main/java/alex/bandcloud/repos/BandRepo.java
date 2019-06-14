@@ -2,10 +2,9 @@ package alex.bandcloud.repos;
 
 import alex.bandcloud.model.Band;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
+@Repository
 public interface BandRepo extends CrudRepository<Band, Long> {
-    List<Band> findAll();
     Band findFirstByName(String name);
 }
