@@ -6,10 +6,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -33,7 +30,7 @@ public class DesignController {
         return "design";
     }
 
-    @PostMapping
+    @DeleteMapping // the view should be amended
     public String processDesign(@ModelAttribute("design") Band design, Model model) {
         if(bandRepo.findFirstByName(design.getName()) != null) {
             model.addAttribute("msg","ERROR: A band with such name already exists");
