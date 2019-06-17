@@ -7,16 +7,19 @@
 </head>
 <body>
 <h1>Already created bands list</h1>
-<form method="POST" th:object="${delete}">
+<form method="DELETE" th:object="${delete}">
     <ul th:each="bandVar : ${bands}">
         <li><span>ID: </span><span th:text="${bandVar.id}"></span></li>
         <li><span>Name: </span><span th:text="${bandVar.name}"></span></li>
         <li><span>Genre: </span><span th:text="${bandVar.genre}"></span></li>
-        <input type="hidden" th:field="*{id}" th:value="${bandVar.id}">
-        <button>Delete</button>
+        <span>
+            <button th:value="${bandVar.id}">Delete</button>
+        </span>
         </br>
     </ul>
 </form>
 <a th:href="@{/}">back to the home page</a>
 </body>
 </html>
+
+<!--onclick="this.parentNode.innerHTML='<b>Deleted</b>'" -->

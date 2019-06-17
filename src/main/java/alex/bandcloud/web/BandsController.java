@@ -2,42 +2,37 @@ package alex.bandcloud.web;
 
 import alex.bandcloud.model.Band;
 import alex.bandcloud.repos.BandRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
 @Controller
 @RequestMapping("/bands")
+@Data
+@RequiredArgsConstructor
 public class BandsController {
-    private BandRepo bandRepo;
-
-    @Autowired
-    public BandsController(BandRepo bandRepo) {
-        this.bandRepo = bandRepo;
-    }
+    private final BandRepo bandRepo;
 
     @ModelAttribute
     public void addBandsToModel(Model model) {
         List<Band> list = (List<Band>) bandRepo.findAll();
         model.addAttribute("bands", list);
-        model.addAttribute("delete", new Band());
     }
 
     @GetMapping
-    public String showCreatedBands() {
+    public String showCreatedBands(Model model) {
+        model.addAttribute("delete", new Integer(0));
         return "bands";
     }
 
-    @PostMapping
-    public String deleteBand(@ModelAttribute("delete") Band delete) {
-        System.out.println(delete);
-        bandRepo.delete(delete);
+    @DeleteMapping
+    public String deleteBand(@ModelAttribute("delete") Integer delete) {
+        System.out.println("Band (id =" + delete + ") is being deleted");
+        bandRepo.delete(bandRepo.findById(delete).get());
         return "bands";
     }
 }

@@ -17,7 +17,7 @@ public class Band {
     private String name;
     private Genre genre;
 
-    public static enum Genre {
+    public enum Genre {
         ROCK, METAL, CHANSON, POP, JAZZ, HIP_HOP
     }
 

@@ -2,7 +2,8 @@ package alex.bandcloud.web;
 
 import alex.bandcloud.model.Band;
 import alex.bandcloud.repos.BandRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,14 +16,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/design")
+@Data
+@RequiredArgsConstructor
 public class DesignController {
-
-    private BandRepo bandRepo;
-
-    @Autowired
-    public DesignController(BandRepo bandRepo) {
-        this.bandRepo = bandRepo;
-    }
+    private final BandRepo bandRepo;
 
     @ModelAttribute
     public void addDataToModel(Model model) {
