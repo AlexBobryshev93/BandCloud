@@ -4,6 +4,7 @@ import alex.bandcloud.model.Band;
 import alex.bandcloud.repos.BandRepo;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,9 +31,9 @@ public class BandsController {
     }
 
     @DeleteMapping
-    public String deleteBand(@ModelAttribute("delete") Integer delete) {
+    @ResponseStatus(code= HttpStatus.NO_CONTENT)
+    public void deleteBand(@PathVariable("delete") Integer delete) {
         System.out.println("Band (id =" + delete + ") is being deleted");
         bandRepo.delete(bandRepo.findById(delete).get());
-        return "bands";
     }
 }
