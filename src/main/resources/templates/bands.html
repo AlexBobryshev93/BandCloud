@@ -7,17 +7,15 @@
 </head>
 <body>
 <h1>Already created bands list</h1>
-<form method="DELETE" th:object="${delete}">
     <ul th:each="bandVar : ${bands}">
         <li><span>ID: </span><span th:text="${bandVar.id}"></span></li>
         <li><span>Name: </span><span th:text="${bandVar.name}"></span></li>
         <li><span>Genre: </span><span th:text="${bandVar.genre}"></span></li>
         <span>
-            <button th:value="${bandVar.id}">Delete</button>
+            <a th:href="${'/bands/delete/' + bandVar.id}">Delete</a>
         </span>
         </br>
     </ul>
-</form>
 <a th:href="@{/}">back to the home page</a>
 </body>
 </html>
