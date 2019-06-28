@@ -30,8 +30,8 @@ public class BandsController {
 
     @RequestMapping(value = "/bands/delete/{id}", method = RequestMethod.GET)
     public String deleteBand(@PathVariable("id") Integer id) {
-        System.out.println("Band (id =" + id + ") is being deleted");
         bandRepo.delete(bandRepo.findById(id).get());
+        System.out.println("Band (id =" + id + ") was deleted");
         return "redirect:/bands";
     }
 }

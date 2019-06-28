@@ -30,7 +30,7 @@ public class DesignController {
         return "design";
     }
 
-    @PostMapping // the view should be amended
+    @PostMapping
     public String processDesign(@ModelAttribute("design") Band design, Model model) {
         if(bandRepo.findFirstByName(design.getName()) != null) {
             model.addAttribute("msg","ERROR: A band with such name already exists");
