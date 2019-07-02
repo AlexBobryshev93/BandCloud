@@ -12,6 +12,7 @@
         <li><span>Name: </span><span th:text="${bandVar.name}"></span></li>
         <li><span>Genre: </span><span th:text="${bandVar.genre}"></span></li>
         <span>
+            <a th:href="${'/bands/edit/' + bandVar.id}">Edit</a>
             <a th:href="${'/bands/delete/' + bandVar.id}">Delete</a>
         </span>
         </br>

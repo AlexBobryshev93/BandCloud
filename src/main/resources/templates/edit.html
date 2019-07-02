@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Band Cloud</title>
+</head>
+
+<body>
+<h1>Here you can update your band...</h1>
+<i th:text="${msg}"></i>
+</br>
+</br>
+<form method="POST" th:object="${design}">
+    <span>Choose a genre to play</span>
+    <select th:field="*{genre}">
+        <option th:each="genreVar : ${genres}" th:value="${genreVar}" th:text="${genreVar}"></option>
+    </select></br>
+    <span>Choose a right name for your band</span>
+    <input type="text" th:field="*{name}" th:value="*{name}"></br>
+    <button>Update the band</button>
+</form>
+</br>
+<a th:href="@{/}">back to the home page</a>
+</br>
+<a th:href="@{/bands}">created bands</a>
+</body>
+</html>
