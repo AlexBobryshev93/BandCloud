@@ -31,8 +31,8 @@ public class EditController {
     }
 
     @PostMapping
-    public String editBand(@ModelAttribute("design") Band design, Model model) {
-        if((design.getName() != null) || (design.getName() != design.getName())) {
+    public String editBand(@ModelAttribute("design") Band design, @PathVariable("id") Integer id, Model model) {
+        if((bandRepo.findFirstByName(design.getName()) != null) && (!design.getName().equals(bandRepo.findById(id).get().getName()))) {
             model.addAttribute("msg","ERROR: A band with such name already exists");
             return "edit";
         }
